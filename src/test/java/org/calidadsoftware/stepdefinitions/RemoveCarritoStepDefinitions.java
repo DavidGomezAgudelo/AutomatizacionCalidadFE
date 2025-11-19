@@ -1,18 +1,21 @@
 package org.calidadsoftware.stepdefinitions;
 
-import io.cucumber.java.en.*;
+import org.calidadsoftware.interactions.WaitFor;
 import org.calidadsoftware.interfaces.CartPage;
 import org.calidadsoftware.questions.CartItemCount;
 import org.calidadsoftware.questions.CartItemsVisible;
 import org.calidadsoftware.tasks.AddToCart;
 import org.calidadsoftware.tasks.RemoveFromCart;
 import org.calidadsoftware.tasks.ViewCart;
-import org.calidadsoftware.interactions.WaitFor;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+
+// definiciones de pasos para eliminar productos del carrito
 public class RemoveCarritoStepDefinitions {
 
     @Given("tiene productos dentro del carrito")

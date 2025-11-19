@@ -1,8 +1,5 @@
 package org.calidadsoftware.stepdefinitions;
 
-import io.cucumber.java.en.*;
-import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
-import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.calidadsoftware.interfaces.CartPage;
 import org.calidadsoftware.questions.ConfirmationMessageVisible;
 import org.calidadsoftware.questions.ErrorMessageVisible;
@@ -10,10 +7,16 @@ import org.calidadsoftware.tasks.AddToCart;
 import org.calidadsoftware.tasks.Checkout;
 import org.calidadsoftware.tasks.CompletePurchase;
 import org.calidadsoftware.tasks.ViewCart;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.is;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.waits.WaitUntil;
+
+// definiciones de pasos para completar la compra
 public class CompletarCompraStepDefinitions {
 
     @Given("ha avanzado del proceso de checkout")

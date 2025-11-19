@@ -1,12 +1,14 @@
 package org.calidadsoftware.tasks;
 
+import org.calidadsoftware.interactions.ClickOn;
+import org.calidadsoftware.interfaces.InventoryPage;
+
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
-import org.calidadsoftware.interfaces.InventoryPage;
-import org.calidadsoftware.interactions.ClickOn;
 
+// tarea para visualizar el carrito de compras
 public class ViewCart implements Task {
 
     @Override

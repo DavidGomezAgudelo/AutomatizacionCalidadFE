@@ -1,8 +1,10 @@
+// page object que mapea los elementos de la pagina del carrito
 package org.calidadsoftware.interfaces;
 
-import net.serenitybdd.screenplay.targets.Target;
-import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
+
+import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.screenplay.targets.Target;
 
 public class CartPage extends PageObject {
 

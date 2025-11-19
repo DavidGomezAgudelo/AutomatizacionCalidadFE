@@ -2,8 +2,8 @@ package org.calidadsoftware.tasks;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Open;
 
+// tarea para abrir la aplicacion en la url indicada
 public class OpenTheApplication {
 
     public static Performable on(String url) {

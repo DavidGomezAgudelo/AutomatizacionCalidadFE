@@ -1,14 +1,16 @@
 package org.calidadsoftware.stepdefinitions;
 
-import io.cucumber.java.en.*;
+import org.calidadsoftware.interactions.WaitFor;
 import org.calidadsoftware.interfaces.InventoryPage;
 import org.calidadsoftware.questions.CartItemCount;
 import org.calidadsoftware.tasks.AddToCart;
-import org.calidadsoftware.interactions.WaitFor;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+
+// definiciones de pasos para agregar productos al carrito
 public class AddCarritoStepDefinitions {
 
     @When("agrega productos al carrito")

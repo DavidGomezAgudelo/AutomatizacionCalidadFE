@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.Tasks;
 import org.calidadsoftware.interfaces.InventoryPage;
 import org.calidadsoftware.interactions.ClickOn;
 
+// tarea para agregar productos al carrito de compras
 public class AddToCart implements Task {
 
     private final int quantity;
@@ -17,6 +18,7 @@ public class AddToCart implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+        // agrega el primer producto si la cantidad es mayor o igual a 1
         if (quantity >= 1) {
             actor.attemptsTo(ClickOn.target(InventoryPage.ADD_TO_CART_FIRST));
         }
@@ -26,3 +28,4 @@ public class AddToCart implements Task {
         return Tasks.instrumented(AddToCart.class, quantity);
     }
 }
+

@@ -1,11 +1,12 @@
+// interaccion para esperar que elementos sean visibles o contengan texto
 package org.calidadsoftware.interactions;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Tasks;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 
 public class WaitFor implements Interaction {
 

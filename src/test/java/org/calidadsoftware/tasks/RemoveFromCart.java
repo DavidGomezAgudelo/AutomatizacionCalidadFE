@@ -1,12 +1,14 @@
 package org.calidadsoftware.tasks;
 
+import org.calidadsoftware.interactions.ClickOn;
+import org.calidadsoftware.interfaces.CartPage;
+
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
-import org.calidadsoftware.interfaces.CartPage;
-import org.calidadsoftware.interactions.ClickOn;
 
+// tarea para eliminar productos del carrito de compras
 public class RemoveFromCart implements Task {
 
     private final int quantity;

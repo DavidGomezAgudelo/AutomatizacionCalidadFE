@@ -1,12 +1,14 @@
 package org.calidadsoftware.tasks;
 
+import org.calidadsoftware.interactions.SelectOption;
+import org.calidadsoftware.interfaces.InventoryPage;
+
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
-import org.calidadsoftware.interfaces.InventoryPage;
-import org.calidadsoftware.interactions.SelectOption;
 
+// tarea para ordenar los productos en la pagina de inventario
 public class SortProducts implements Task {
 
     private final String sortOption;

@@ -1,3 +1,4 @@
+// interaccion para ingresar texto en campos de formulario
 package org.calidadsoftware.interactions;
 
 import net.serenitybdd.screenplay.Actor;

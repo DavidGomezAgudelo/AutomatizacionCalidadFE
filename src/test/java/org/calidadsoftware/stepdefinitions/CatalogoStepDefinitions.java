@@ -1,13 +1,15 @@
 package org.calidadsoftware.stepdefinitions;
 
-import io.cucumber.java.en.*;
 import org.calidadsoftware.questions.ProductListVisible;
 import org.calidadsoftware.questions.ProductsSorted;
 import org.calidadsoftware.tasks.SortProducts;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.is;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+
+// definiciones de pasos para visualizar el catalogo de productos
 public class CatalogoStepDefinitions {
 
     @When("ordena productos")

@@ -1,12 +1,14 @@
 package org.calidadsoftware.stepdefinitions;
 
-import io.cucumber.java.en.*;
 import org.calidadsoftware.questions.ProductDetailsVisible;
 import org.calidadsoftware.tasks.ViewProductDetail;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.is;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+
+// definiciones de pasos para ver el detalle de un producto
 public class VerProductDetailStepDefinitions {
 
     @When("selecciona un producto")

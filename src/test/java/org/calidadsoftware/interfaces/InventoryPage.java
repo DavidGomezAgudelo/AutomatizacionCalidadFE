@@ -4,6 +4,7 @@ import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
 
+// page object que mapea los elementos de la pagina de inventario/catalogo
 public class InventoryPage extends PageObject {
 
     public static final Target PRODUCT_LIST = Target.the("lista de productos")
@@ -33,6 +34,7 @@ public class InventoryPage extends PageObject {
     public static final Target LOGOUT_LINK = Target.the("enlace logout")
             .located(By.id("logout_sidebar_link"));
 
+    // botones especificos para agregar productos individuales al carrito
     public static final Target ADD_TO_CART_FIRST = Target.the("botón agregar al carrito primero")
             .located(By.id("add-to-cart-sauce-labs-backpack"));
 
@@ -42,3 +44,4 @@ public class InventoryPage extends PageObject {
     public static final Target PRODUCT_PRICE = Target.the("precio del producto")
             .located(By.className("inventory_item_price"));
 }
+

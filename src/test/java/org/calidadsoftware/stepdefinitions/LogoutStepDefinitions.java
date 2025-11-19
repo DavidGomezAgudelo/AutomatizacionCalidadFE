@@ -1,13 +1,15 @@
 package org.calidadsoftware.stepdefinitions;
 
-import io.cucumber.java.en.*;
 import org.calidadsoftware.questions.RedirectedToLogin;
-import org.calidadsoftware.tasks.OpenMenu;
 import org.calidadsoftware.tasks.Logout;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import org.calidadsoftware.tasks.OpenMenu;
 import static org.hamcrest.Matchers.is;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+
+// definiciones de pasos para cerrar sesion
 public class LogoutStepDefinitions {
 
     @When("abre el menu")

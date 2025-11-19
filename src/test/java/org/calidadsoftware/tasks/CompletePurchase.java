@@ -1,13 +1,15 @@
 package org.calidadsoftware.tasks;
 
+import org.calidadsoftware.interactions.ClickOn;
+import org.calidadsoftware.interactions.EnterText;
+import org.calidadsoftware.interfaces.CheckoutPage;
+
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
-import org.calidadsoftware.interfaces.CheckoutPage;
-import org.calidadsoftware.interactions.ClickOn;
-import org.calidadsoftware.interactions.EnterText;
 
+// tarea para completar la compra ingresando los datos requeridos
 public class CompletePurchase implements Task {
 
     private final String firstName;

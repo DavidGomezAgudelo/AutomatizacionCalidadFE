@@ -1,3 +1,4 @@
+// interaccion para seleccionar opciones en dropdowns
 package org.calidadsoftware.interactions;
 
 import net.serenitybdd.screenplay.Actor;

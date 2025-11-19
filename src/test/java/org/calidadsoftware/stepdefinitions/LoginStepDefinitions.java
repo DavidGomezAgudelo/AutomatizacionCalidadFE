@@ -1,15 +1,18 @@
 package org.calidadsoftware.stepdefinitions;
 
-import io.cucumber.java.en.*;
-import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.calidadsoftware.drivers.DriverFactory;
 import org.calidadsoftware.questions.LoginError;
 import org.calidadsoftware.tasks.Login;
 import org.calidadsoftware.tasks.OpenTheApplication;
+import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertTrue;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 
+// definiciones de pasos para el login
 public class LoginStepDefinitions {
 
     @Given("que el usuario está en la página de login")

@@ -7,10 +7,12 @@ import net.serenitybdd.screenplay.Tasks;
 import org.calidadsoftware.interfaces.InventoryPage;
 import org.calidadsoftware.interactions.ClickOn;
 
+// tarea para visualizar el detalle de un producto
 public class ViewProductDetail implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+        // hace click en el nombre del primer producto para ver su detalle
         actor.attemptsTo(ClickOn.target(InventoryPage.PRODUCT_NAME));
     }
 
@@ -18,3 +20,4 @@ public class ViewProductDetail implements Task {
         return Tasks.instrumented(ViewProductDetail.class);
     }
 }
+
