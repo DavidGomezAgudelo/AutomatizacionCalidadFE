@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url 'https://repo.serenity-bdd.info/releases' }
+    }
+}
+
+rootProject.name = "TallerAutomatizacionCalidad"

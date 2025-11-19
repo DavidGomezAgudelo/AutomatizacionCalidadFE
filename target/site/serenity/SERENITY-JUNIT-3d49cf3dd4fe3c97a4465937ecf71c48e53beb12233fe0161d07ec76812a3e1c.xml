@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Visualizar catálogo de tienda" skipped="0" tests="2" time="5.13" timestamp="2025-11-17 03:58:53"><testcase name="Usuario autenticado visualiza productos"/><testcase name="Usuario autenticado ordena los productos"/></testsuite>

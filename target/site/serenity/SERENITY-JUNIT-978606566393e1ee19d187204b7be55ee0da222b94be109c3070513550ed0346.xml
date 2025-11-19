@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Finalizar compra" skipped="0" tests="3" time="10.24" timestamp="2025-11-17 03:59:00"><testcase name="Usuario completa informacion de compra"/><testcase name="Usuario no completa informacion de compra"/><testcase name="Usuario completa el proceso de compra"/></testsuite>
