@@ -1,19 +1,15 @@
 Feature: Inicio de sesión
-  Como: usuario registrado
-  Quiero iniciar sesion en la tienda
+  Como usuario registrado
+  Quiero iniciar sesión en la tienda
   Para poder acceder a mi cuenta
 
-  Scenario: Usuario registrado inicia sesión exitosamente
+  Scenario Outline: Validación del proceso de inicio de sesión
     Given que el usuario está en la página de login
-    When ingresa su usuario y contraseña correctos
-    Then el sistema lo redirige al catálogo de productos
+    When ingresa su usuario "<usuario>" y contraseña "<contrasena>"
+    Then el sistema debe mostrar "<resultado>"
 
-  Scenario: Usuario inicia sesión con credenciales incorrectas
-    Given que el usuario está en la página de login
-    When ingresa un usuario o contraseña incorrectos
-    Then el sistema muestra un mensaje de error
-
-  Scenario: Usuario inicia sesion con cuenta bloqueada
-    Given que el usuario está en la página de login
-    When ingresa las credenciales de una cuenta bloqueada
-    Then el sistema muestra un mensaje de error
+    Examples:
+      | usuario          | contrasena     | resultado              |
+      | standard_user    | secret_sauce   | success                |
+      | wrong            | wrong          | error                  |
+      | locked_out_user  | secret_sauce   | error                  |
