@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import org.calidadsoftware.drivers.DriverFactory;
 import org.calidadsoftware.tasks.Login;
-import org.calidadsoftware.tasks.OpenTheApplication;
+import org.calidadsoftware.utils.OpenTheApplication;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
@@ -18,27 +18,32 @@ public class CommonStepDefinitions {
     public static WebDriver browser;
     public static Actor actor = Actor.named("usuario");
 
+    // inicializa el navegador y configura el actor, sin login
+    public static void openApplication() {
+        browser = DriverFactory.firefox();
+        actor.can(BrowseTheWeb.with(browser));
+        String appUrl = getAppUrl();
+        actor.attemptsTo(OpenTheApplication.on(appUrl));
+    }
+
     // inicializa el navegador, configura el actor y realiza login
     @Given("que el usuario ha iniciado sesion")
     public void usuario_ha_iniciado_sesion() {
-        browser = DriverFactory.firefox();
-        actor.can(BrowseTheWeb.with(browser)); // le da al actor la habilidad de navegar
-        String appUrl = getAppUrl();
-        actor.attemptsTo(OpenTheApplication.on(appUrl));
+        openApplication();
         actor.attemptsTo(Login.with("standard_user", "secret_sauce"));
     }
 
-    private String getAppUrl() {
+    private static String getAppUrl() {
         Properties props = new Properties();
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("serenity.properties")) {
+        try (InputStream input = CommonStepDefinitions.class.getClassLoader().getResourceAsStream("serenity.properties")) {
             if (input != null) {
                 props.load(input);
-                return props.getProperty("app.url", "https://www.saucedemo.com");
+                return props.getProperty("app.url");
             }
         } catch (IOException e) {
             // error
         }
-        return "https://www.saucedemo.com";
+        return "blank";
     }
 
     // despues del login el usuario ya esta en el catalogo

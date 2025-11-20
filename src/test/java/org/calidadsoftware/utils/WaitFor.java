@@ -1,5 +1,5 @@
 // interaccion para esperar que elementos sean visibles o contengan texto
-package org.calidadsoftware.interactions;
+package org.calidadsoftware.utils;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;

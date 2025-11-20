@@ -1,12 +1,9 @@
 package org.calidadsoftware.stepdefinitions;
 
-import org.calidadsoftware.interactions.WaitFor;
-import org.calidadsoftware.interfaces.CartPage;
+import org.calidadsoftware.tasks.DeleteProducts;
 import org.calidadsoftware.questions.CartItemCount;
 import org.calidadsoftware.questions.CartItemsVisible;
 import org.calidadsoftware.tasks.AddToCart;
-import org.calidadsoftware.tasks.RemoveFromCart;
-import org.calidadsoftware.tasks.ViewCart;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -25,11 +22,9 @@ public class RemoveCarritoStepDefinitions {
 
     @When("elimina productos")
     public void elimina_productos() {
-        CommonStepDefinitions.actor.attemptsTo(ViewCart.now());
         CommonStepDefinitions.actor.attemptsTo(
-                WaitFor.visible(CartPage.CART_LIST, 5)
+                DeleteProducts.now()
         );
-        CommonStepDefinitions.actor.attemptsTo(RemoveFromCart.products(1));
     }
 
     @Then("se debe actualizar el contador del carrito")

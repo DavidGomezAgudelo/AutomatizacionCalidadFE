@@ -1,7 +1,7 @@
 package org.calidadsoftware.tasks;
 
 import org.calidadsoftware.interactions.ClickOn;
-import org.calidadsoftware.interactions.WaitFor;
+import org.calidadsoftware.utils.WaitFor;
 import org.calidadsoftware.interfaces.InventoryPage;
 
 import net.serenitybdd.screenplay.Actor;

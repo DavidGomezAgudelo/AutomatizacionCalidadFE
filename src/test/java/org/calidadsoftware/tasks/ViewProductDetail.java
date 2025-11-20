@@ -4,7 +4,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
-import org.calidadsoftware.interactions.WaitFor;
+import org.calidadsoftware.utils.WaitFor;
 import org.calidadsoftware.interfaces.InventoryPage;
 import org.calidadsoftware.interactions.ClickOn;
 

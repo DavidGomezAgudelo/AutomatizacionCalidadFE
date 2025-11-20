@@ -1,4 +1,4 @@
-package org.calidadsoftware.tasks;
+package org.calidadsoftware.utils;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;

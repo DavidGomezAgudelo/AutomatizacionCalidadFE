@@ -26,6 +26,9 @@ public class CheckoutPage extends PageObject {
     public static final Target CONFIRMATION_MESSAGE = Target.the("mensaje de confirmación")
             .located(By.className("complete-header"));
 
+    public static final Target SUMMARY_CONTAINER = Target.the("contenedor del resumen de los articulos")
+            .located(By.className("summary_info"));
+
     public static final Target ERROR_MESSAGE = Target.the("mensaje de error")
             .located(By.className("error-message-container"));
 }

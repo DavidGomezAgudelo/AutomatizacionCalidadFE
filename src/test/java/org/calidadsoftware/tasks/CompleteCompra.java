@@ -2,6 +2,7 @@ package org.calidadsoftware.tasks;
 
 import org.calidadsoftware.interactions.ClickOn;
 import org.calidadsoftware.interactions.EnterText;
+import org.calidadsoftware.stepdefinitions.CommonStepDefinitions;
 import org.calidadsoftware.utils.WaitFor;
 import org.calidadsoftware.interfaces.CheckoutPage;
 
@@ -10,16 +11,18 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 
-// tarea para completar la compra ingresando los datos requeridos
-public class CompletePurchase implements Task {
+// tarea para completar la compra
+public class CompleteCompra implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(ClickOn.target(CheckoutPage.FINISH_BUTTON));
-        actor.attemptsTo(WaitFor.sleep(2));
+        CommonStepDefinitions.actor.attemptsTo(
+                AddToCart.products(1),
+                ViewCart.now()
+        );
     }
 
     public static Performable now() {
-        return Tasks.instrumented(CompletePurchase.class);
+        return Tasks.instrumented(CompleteCompra.class);
     }
 }

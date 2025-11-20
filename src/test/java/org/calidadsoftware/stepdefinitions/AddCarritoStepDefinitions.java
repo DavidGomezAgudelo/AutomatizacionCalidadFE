@@ -1,6 +1,6 @@
 package org.calidadsoftware.stepdefinitions;
 
-import org.calidadsoftware.interactions.WaitFor;
+import org.calidadsoftware.utils.WaitFor;
 import org.calidadsoftware.interfaces.InventoryPage;
 import org.calidadsoftware.questions.CartItemCount;
 import org.calidadsoftware.tasks.AddToCart;
@@ -20,10 +20,6 @@ public class AddCarritoStepDefinitions {
 
     @Then("el contador del carrito debe aumentar según la cantidad agregada")
     public void contador_aumenta() {
-        CommonStepDefinitions.actor.attemptsTo(
-                WaitFor.visible(InventoryPage.CART_BADGE, 5),
-                WaitFor.containsText(InventoryPage.CART_BADGE, "1", 5)
-        );
         CommonStepDefinitions.actor.should(seeThat(CartItemCount.value(), equalTo(1)));
     }
 }

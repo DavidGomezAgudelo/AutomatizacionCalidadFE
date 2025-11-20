@@ -1,6 +1,6 @@
 package org.calidadsoftware.stepdefinitions;
 
-import org.calidadsoftware.interactions.WaitFor;
+import org.calidadsoftware.utils.WaitFor;
 import org.calidadsoftware.interfaces.CartPage;
 import org.calidadsoftware.questions.CartItemsVisible;
 import org.calidadsoftware.tasks.AddToCart;
@@ -27,9 +27,6 @@ public class VerCarritoStepDefinitions {
 
     @Then("debe visualizar la lista de productos agregados")
     public void visualiza_lista_productos() {
-        CommonStepDefinitions.actor.attemptsTo(
-                WaitFor.visible(CartPage.CART_LIST, 5)
-        );
         CommonStepDefinitions.actor.should(seeThat(CartItemsVisible.are(), is(true)));
     }
 }

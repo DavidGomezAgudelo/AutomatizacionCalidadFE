@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import org.calidadsoftware.interfaces.InventoryPage;
 import org.calidadsoftware.interactions.ClickOn;
-import org.calidadsoftware.interactions.WaitFor;
+import org.calidadsoftware.utils.WaitFor;
 
 // tarea para agregar productos al carrito de compras
 public class AddToCart implements Task {
