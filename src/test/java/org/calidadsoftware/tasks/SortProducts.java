@@ -1,6 +1,7 @@
 package org.calidadsoftware.tasks;
 
 import org.calidadsoftware.interactions.SelectOption;
+import org.calidadsoftware.interactions.WaitFor;
 import org.calidadsoftware.interfaces.InventoryPage;
 
 import net.serenitybdd.screenplay.Actor;
@@ -20,6 +21,7 @@ public class SortProducts implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(SelectOption.byVisibleText(sortOption, InventoryPage.SORT_DROPDOWN));
+        actor.attemptsTo(WaitFor.sleep(2));
     }
 
     public static Performable by(String sortOption) {

@@ -1,6 +1,7 @@
 package org.calidadsoftware.tasks;
 
 import org.calidadsoftware.interactions.ClickOn;
+import org.calidadsoftware.interactions.WaitFor;
 import org.calidadsoftware.interfaces.CartPage;
 
 import net.serenitybdd.screenplay.Actor;
@@ -14,6 +15,7 @@ public class Checkout implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(ClickOn.target(CartPage.CHECKOUT_BUTTON));
+        actor.attemptsTo(WaitFor.sleep(2));
     }
 
     public static Performable now() {

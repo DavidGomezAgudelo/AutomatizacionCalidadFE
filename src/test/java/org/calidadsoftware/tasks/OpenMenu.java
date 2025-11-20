@@ -1,6 +1,7 @@
 package org.calidadsoftware.tasks;
 
 import org.calidadsoftware.interactions.ClickOn;
+import org.calidadsoftware.interactions.WaitFor;
 import org.calidadsoftware.interfaces.InventoryPage;
 
 import net.serenitybdd.screenplay.Actor;
@@ -14,8 +15,9 @@ public class OpenMenu implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                ClickOn.target(InventoryPage.MENU_BUTTON)
-        );
+                ClickOn.target(InventoryPage.MENU_BUTTON),
+                WaitFor.sleep(2)
+                );
     }
 
     public static Performable now() {

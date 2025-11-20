@@ -15,7 +15,7 @@ public class WaitFor implements Interaction {
     private final String text;
     private final Mode mode;
 
-    public enum Mode {VISIBLE, CONTAINS_TEXT}
+    public enum Mode {VISIBLE, CONTAINS_TEXT, SLEEP}
 
     public WaitFor(Target target, int seconds, String text, Mode mode) {
         this.target = target;
@@ -32,17 +32,27 @@ public class WaitFor implements Interaction {
         return Tasks.instrumented(WaitFor.class, target, seconds, text, Mode.CONTAINS_TEXT);
     }
 
+    public static WaitFor sleep(int seconds) {
+        return Tasks.instrumented(WaitFor.class, null, seconds, null, Mode.SLEEP);
+    }
+
     @Override
     public <T extends Actor> void performAs(T actor) {
         if (mode == Mode.VISIBLE) {
             actor.attemptsTo(
                     WaitUntil.the(target, WebElementStateMatchers.isVisible()).forNoMoreThan(seconds).seconds()
             );
-        } else {
+        } else if (mode == Mode.CONTAINS_TEXT) {
             actor.attemptsTo(
                     WaitUntil.the(target, WebElementStateMatchers.containsText(text)).forNoMoreThan(seconds).seconds()
             );
+        } else if (mode == Mode.SLEEP) {
+            try {
+                Thread.sleep(seconds * 1000L);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException("Sleep interrupted", e);
+            }
         }
     }
 }
-

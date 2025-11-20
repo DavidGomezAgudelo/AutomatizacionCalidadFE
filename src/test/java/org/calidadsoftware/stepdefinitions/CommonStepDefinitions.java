@@ -8,6 +8,10 @@ import org.calidadsoftware.tasks.Login;
 import org.calidadsoftware.tasks.OpenTheApplication;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 // step definitions comunes compartidos entre multiples features
 public class CommonStepDefinitions {
 
@@ -19,8 +23,22 @@ public class CommonStepDefinitions {
     public void usuario_ha_iniciado_sesion() {
         browser = DriverFactory.firefox();
         actor.can(BrowseTheWeb.with(browser)); // le da al actor la habilidad de navegar
-        actor.attemptsTo(OpenTheApplication.on("https://www.saucedemo.com"));
+        String appUrl = getAppUrl();
+        actor.attemptsTo(OpenTheApplication.on(appUrl));
         actor.attemptsTo(Login.with("standard_user", "secret_sauce"));
+    }
+
+    private String getAppUrl() {
+        Properties props = new Properties();
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("serenity.properties")) {
+            if (input != null) {
+                props.load(input);
+                return props.getProperty("app.url", "https://www.saucedemo.com");
+            }
+        } catch (IOException e) {
+            // error
+        }
+        return "https://www.saucedemo.com";
     }
 
     // despues del login el usuario ya esta en el catalogo

@@ -2,6 +2,7 @@ package org.calidadsoftware.tasks;
 
 import org.calidadsoftware.interactions.ClickOn;
 import org.calidadsoftware.interactions.EnterText;
+import org.calidadsoftware.interactions.WaitFor;
 import org.calidadsoftware.interfaces.CheckoutPage;
 
 import net.serenitybdd.screenplay.Actor;
@@ -26,12 +27,18 @@ public class CompletePurchase implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 EnterText.valueInto(firstName, CheckoutPage.FIRST_NAME),
+                WaitFor.sleep(2),
                 EnterText.valueInto(lastName, CheckoutPage.LAST_NAME),
+                WaitFor.sleep(2),
                 EnterText.valueInto(postalCode, CheckoutPage.POSTAL_CODE),
-                ClickOn.target(CheckoutPage.CONTINUE_BUTTON)
-        );
+                WaitFor.sleep(2),
+                ClickOn.target(CheckoutPage.CONTINUE_BUTTON),
+                WaitFor.sleep(2)
+                );
+        actor.attemptsTo(WaitFor.sleep(2));
         if (!(firstName.isEmpty() && lastName.isEmpty() && postalCode.isEmpty())) {
             actor.attemptsTo(ClickOn.target(CheckoutPage.FINISH_BUTTON));
+            actor.attemptsTo(WaitFor.sleep(2));
         }
     }
 
