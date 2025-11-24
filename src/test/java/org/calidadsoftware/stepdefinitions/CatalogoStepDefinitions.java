@@ -27,7 +27,7 @@ public class CatalogoStepDefinitions {
         CommonStepDefinitions.actor.should(seeThat(ProductListVisible.is(), is(true)));
     }
 
-    @Then("el sistema muestra los productos ordenados")
+    @Then("debe visualizar los productos ordenados")
     public void muestra_productos_ordenados() {
         CommonStepDefinitions.actor.should(seeThat(ProductsSorted.by("Name (A to Z)"), is(true)));
     }

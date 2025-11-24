@@ -6,7 +6,7 @@ Feature: Inicio de sesión
   Scenario Outline: Validación del proceso de inicio de sesión
     Given que el usuario está en la página de login
     When ingresa su usuario "<usuario>" y contraseña "<contrasena>"
-    Then el sistema debe mostrar en login "<resultado>"
+    Then se debe mostrar en login "<resultado>"
 
     Examples:
       | usuario          | contrasena     | resultado              |

@@ -12,4 +12,4 @@ Para decidir que comprar.
     Given que el usuario ha iniciado sesion
     And se encuentra en el catálogo de productos
     When ordena productos
-    Then el sistema muestra los productos ordenados
+    Then debe visualizar los productos ordenados

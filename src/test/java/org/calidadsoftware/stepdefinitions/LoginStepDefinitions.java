@@ -25,7 +25,7 @@ public class LoginStepDefinitions {
         CommonStepDefinitions.actor.attemptsTo(Login.with(usuario, contrasena));
     }
 
-    @Then("el sistema debe mostrar en login {string}")
+    @Then("se debe mostrar en login {string}")
     public void el_sistema_debe_mostrar_en_login(String resultado) {
 
         switch (resultado.toLowerCase()) {

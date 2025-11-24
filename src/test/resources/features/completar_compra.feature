@@ -8,7 +8,7 @@ Feature: Finalizar compra
     And el usuario ha realizado su compra hasta el checkout
     When accede a la página de checkout
     And ingresa su informacion "<nombre>" "<apellido>" "<codigo_postal>"
-    Then el sistema debe mostrar en compra "<resultado>"
+    Then se debe mostrar en compra "<resultado>"
 
     Examples:
       | nombre    | apellido    | codigo_postal | resultado           |

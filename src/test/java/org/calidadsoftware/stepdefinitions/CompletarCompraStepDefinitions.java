@@ -37,7 +37,7 @@ public class CompletarCompraStepDefinitions {
         );
     }
 
-    @Then("el sistema debe mostrar en compra {string}")
+    @Then("se debe mostrar en compra {string}")
     public void el_sistema_debe_mostrar_en_compra(String resultado) {
 
         switch (resultado.toLowerCase()) {
