@@ -1,8 +1,6 @@
 // Task to delete a medical office
 package org.calidadsoftware.tasks;
 
-import org.calidadsoftware.interactions.ClickOn;
-import org.calidadsoftware.interfaces.MedicalDashboardPage;
 import org.calidadsoftware.utils.WaitFor;
 
 import net.serenitybdd.screenplay.Actor;
@@ -26,55 +24,63 @@ public class DeleteOffice implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         JavascriptExecutor js = (JavascriptExecutor) BrowseTheWeb.as(actor).getDriver();
-
-        actor.attemptsTo(WaitFor.sleep(3)); // Wait for the office list to update
-
-        // Scroll to bottom first
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        
         actor.attemptsTo(WaitFor.sleep(2));
 
-        // Find the delete button and click it with full event simulation
-        js.executeScript(
-                "var h3 = Array.from(document.querySelectorAll('h3')).find(h => h.textContent.includes('Consultorio " + officeName + "'));" +
-                "if (h3) {" +
-                "  var buttonContainer = h3.closest('.flex.items-start');" +
-                "  if (buttonContainer) {" +
-                "    var deleteButton = Array.from(buttonContainer.querySelectorAll('button')).find(b => b.querySelector('svg.lucide-trash2'));" +
-                "    if (deleteButton) {" +
-                "      deleteButton.scrollIntoView({behavior: 'instant', block: 'center'});" +
-                "      var events = ['mouseenter', 'mouseover', 'mousedown', 'mouseup', 'click'];" +
-                "      events.forEach(eventType => {" +
-                "        var event = new MouseEvent(eventType, {" +
-                "          bubbles: true," +
-                "          cancelable: true," +
-                "          view: window" +
-                "        });" +
-                "        deleteButton.dispatchEvent(event);" +
-                "      });" +
-                "    }" +
-                "  }" +
-                "}");
-
-        actor.attemptsTo(WaitFor.sleep(2)); // Wait for confirmation dialog to appear
+        // Find and click the Eliminar button using JavaScript
+        String findAndClickScript = """
+            const cards = document.querySelectorAll('[class*="border"][class*="rounded"]');
+            console.log('Looking for office to delete: %s');
+            console.log('Found cards:', cards.length);
+            
+            for (const card of cards) {
+                // Try multiple selectors for the office name
+                const nameElement = card.querySelector('h3') || 
+                                   card.querySelector('div.text-lg.font-semibold') ||
+                                   card.querySelector('[class*="font-semibold"]');
+                
+                if (nameElement) {
+                    const text = nameElement.textContent.trim();
+                    console.log('Found office:', text);
+                    
+                    // Match exact number (e.g., "Consultorio 109" should match "109")
+                    if (text.includes('Consultorio %s') || text === '%s') {
+                        console.log('Match found! Looking for Eliminar button');
+                        const buttons = card.querySelectorAll('button');
+                        console.log('Found buttons:', buttons.length);
+                        
+                        for (const btn of buttons) {
+                            console.log('Button text:', btn.textContent);
+                            if (btn.textContent.includes('Eliminar')) {
+                                console.log('Clicking Eliminar button');
+                                btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                btn.click();
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            console.log('Office not found');
+            return false;
+        """.formatted(officeName, officeName, officeName);
         
-        // Click Eliminar button simulating real user interaction
-        js.executeScript(
-            "var alertDialog = document.querySelector('[role=\"alertdialog\"]');" +
-            "if (alertDialog) {" +
-            "  var deleteButton = Array.from(alertDialog.querySelectorAll('button')).find(b => b.textContent.trim() === 'Eliminar');" +
-            "  if (deleteButton) {" +
-            "    deleteButton.focus();" +
-            "    deleteButton.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true, cancelable: true }));" +
-            "    deleteButton.dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));" +
-            "    deleteButton.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));" +
-            "    deleteButton.dispatchEvent(new MouseEvent('mouseup', { bubbles: true, cancelable: true }));" +
-            "    deleteButton.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));" +
-            "    deleteButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true }));" +
-            "    deleteButton.dispatchEvent(new KeyboardEvent('keypress', { key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true }));" +
-            "    deleteButton.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true }));" +
-            "  }" +
-            "}");
+        Object result = js.executeScript(findAndClickScript);
+        System.out.println("Click Eliminar result: " + result);
+        actor.attemptsTo(WaitFor.sleep(2));
         
-        actor.attemptsTo(WaitFor.sleep(2)); // Wait for deletion to complete
+        // Click Eliminar button in confirmation dialog
+        String clickEliminarScript = """
+            const buttons = document.querySelectorAll('[role="alertdialog"] button, [role="dialog"] button');
+            for (const btn of buttons) {
+                if (btn.textContent.trim() === 'Eliminar') {
+                    btn.click();
+                    return true;
+                }
+            }
+            return false;
+        """;
+        js.executeScript(clickEliminarScript);
+        actor.attemptsTo(WaitFor.sleep(3));
     }
 }

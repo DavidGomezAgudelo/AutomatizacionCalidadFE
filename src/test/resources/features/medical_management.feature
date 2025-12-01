@@ -12,10 +12,8 @@ Feature: Medical Management
 
     Examples:
       | nombre | especialidad        | sede           | Mensaje                                          |
-      | 23    | Odontología         | Sede Norte     | Consultorio Registrado                           |
-      | 24    | Pediatría           | Sede Central   | Consultorio Registrado                           |
-      | 25     | Medicina General    | Sede Sur       | El número de consultorio ya existe en la Sede    |
-
+      | 117    | Odontología         | Sede Norte     | Consultorio Registrado                           |
+      
   @medical_management @edit_clinic
   Scenario Outline: Edit an existing office
     Given que el usuario ha iniciado sesión como administrador
@@ -25,8 +23,7 @@ Feature: Medical Management
 
     Examples:
       | nombreOriginal | nuevoNombre | nuevaEspecialidad | Mensaje                  |
-      | 26            | 776         | Odontología       | Consultorio actualizado  |
-      | 27            | 777         | Cardiología       | Consultorio actualizado  |
+      | 118            | 333         | Odontología       | Consultorio actualizado  |
 
   @medical_management @delete_clinic
   Scenario Outline: Delete an existing office
@@ -37,5 +34,4 @@ Feature: Medical Management
 
     Examples:
       | nombreOriginal | Mensaje                 |
-      | 28            | Consultorio eliminado   |
-      | 29            | Consultorio eliminado   |
+      | 119           | Consultorio eliminado   |

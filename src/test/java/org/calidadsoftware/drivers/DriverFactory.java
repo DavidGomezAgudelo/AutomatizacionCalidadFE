@@ -2,6 +2,8 @@ package org.calidadsoftware.drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,12 +12,13 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 // fabrica de drivers para configurar diferentes navegadores
 public class DriverFactory {
 
-    // crea edge driver con ventana maximizada
+    // crea chrome driver con ventana maximizada
     public static WebDriver chrome() {
-        WebDriverManager.edgedriver().setup();
-        EdgeOptions options = new EdgeOptions();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        return new EdgeDriver(options);
+        options.addArguments("--disable-search-engine-choice-screen");
+        return new ChromeDriver(options);
     }
 
     // crea edge driver basico sin opciones adicionales

@@ -20,7 +20,7 @@ public class CommonStepDefinitions {
 
     // inicializa el navegador y configura el actor, sin login
     public static void openApplication() {
-        browser = DriverFactory.firefox();
+        browser = DriverFactory.chrome();
         actor.can(BrowseTheWeb.with(browser));
         String appUrl = getAppUrl();
         actor.attemptsTo(OpenTheApplication.on(appUrl));
